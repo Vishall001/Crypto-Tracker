@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -20,13 +19,13 @@ function App() {
       });
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setSearch(e.target.value);
   };
-  const filteredCoin = coin.filter((coin) => {
-    coin.name.toLowerCase().includes(search.toLowerCase());
-    
-  });
+  const filteredCoin = coin.filter(coin => 
+    coin.name.toLowerCase().includes(search.toLowerCase())
+ 
+  );
   return (
     <div className="coin-app">
       <div className="coin-search">
@@ -46,9 +45,11 @@ function App() {
             key={coin.id}
             image={coin.image}
             name={coin.name}
-            volume={coin.market_cap}
+            marketcap={coin.market_cap}
             price={coin.current_price}
             symbol={coin.symbol}
+            priceChange={coin.price_change_percentage_24h}
+            volume={coin.total_volume}
           />
         );
       })}
